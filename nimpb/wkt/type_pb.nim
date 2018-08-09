@@ -534,7 +534,7 @@ proc parsegoogle_protobuf_Field*(obj: JsonNode): google_protobuf_Field =
         setcardinality(result, parseEnum[google_protobuf_Field_Cardinality](node))
     node = getJsonField(obj, "number", "number")
     if node != nil and node.kind != JNull:
-        setnumber(result, parseInt[int32](node))
+        setnumber(result, parseSignedInt[int32](node))
     node = getJsonField(obj, "name", "name")
     if node != nil and node.kind != JNull:
         setname(result, parseString(node))
@@ -543,7 +543,7 @@ proc parsegoogle_protobuf_Field*(obj: JsonNode): google_protobuf_Field =
         settypeUrl(result, parseString(node))
     node = getJsonField(obj, "oneof_index", "oneofIndex")
     if node != nil and node.kind != JNull:
-        setoneofIndex(result, parseInt[int32](node))
+        setoneofIndex(result, parseSignedInt[int32](node))
     node = getJsonField(obj, "packed", "packed")
     if node != nil and node.kind != JNull:
         setpacked(result, parseBool(node))
@@ -968,7 +968,7 @@ proc parsegoogle_protobuf_EnumValue*(obj: JsonNode): google_protobuf_EnumValue =
         setname(result, parseString(node))
     node = getJsonField(obj, "number", "number")
     if node != nil and node.kind != JNull:
-        setnumber(result, parseInt[int32](node))
+        setnumber(result, parseSignedInt[int32](node))
     node = getJsonField(obj, "options", "options")
     if node != nil and node.kind != JNull:
         if node.kind != JArray:

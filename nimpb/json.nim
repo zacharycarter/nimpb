@@ -72,7 +72,7 @@ proc parseFloat*[T: float32|float64](node: JsonNode): T =
     of fcNan: raise newException(ParseError, "invalid floating point number")
     else: discard
 
-proc parseInt*[T: int32|int64](node: JsonNode): T =
+proc parseSignedInt*[T: int32|int64](node: JsonNode): T =
     var big: BiggestInt
 
     if node.kind == JString:
@@ -97,7 +97,7 @@ proc parseInt*[T: int32|int64](node: JsonNode): T =
 
 proc high(t: typedesc[uint64]): uint64 = 18446744073709551615'u64
 
-proc parseInt*[T: uint32|uint64](node: JsonNode): T =
+proc parseUnsignedInt*[T: uint32|uint64](node: JsonNode): T =
     var big: BiggestUInt
 
     if node.kind == JString:
